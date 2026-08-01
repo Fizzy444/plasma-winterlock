@@ -1,51 +1,73 @@
 # WinterLock
 
-WinterLock is a KDE Plasma 6 lock-screen customization that keeps the stock
-Plasma/Breeze authentication flow while displaying the live Winter scene used
-by the companion SDDM theme.
+WinterLock is a KDE Plasma 6 lock-screen theme with the standard Plasma/Breeze
+authentication interface, an ice-blue Orbitron clock, and an optional live
+Winter video background.
 
-## What it includes
+![WinterLock lock-screen preview](look-and-feel/io.github.fizzy444.winterlock/contents/previews/lockscreen.png)
 
-- A looping Winter video background from the SDDM `winter` theme.
-- An ice-blue Orbitron clock with date styling.
-- Stock Plasma 6 password, PAM authentication, session controls, and unlock
-  behavior.
+![WinterLock Global Theme preview](look-and-feel/io.github.fizzy444.winterlock/contents/previews/preview.png)
 
-## Layout
+## Compatibility warning
 
-The repository intentionally contains two Plasma packages:
+WinterLock installs a complete local override of
+`org.kde.plasma.desktop` in `~/.local/share/plasma/shells/`. This is necessary
+because current Plasma 6 KScreenLocker loads its lock screen from the active
+shell package rather than from a Look-and-Feel package.
 
-- `look-and-feel/org.mithun.winterlock` is the Global Theme shown by Plasma.
-- `shells/org.kde.plasma.desktop` is a complete local fork of the official
-  desktop shell. Plasma 6.7's KScreenLocker loads its lock screen from the
-  active shell package, so this override is what makes the Winter lock screen
-  active.
+The override may need to be rebuilt after major Plasma upgrades. Use the
+included uninstaller before troubleshooting a Plasma shell issue.
 
-## Dependency
+## Installation
 
-The animated background is read directly from:
+Requirements:
 
-`/usr/share/sddm/themes/winter/bg.mp4`
+- KDE Plasma 6 and KScreenLocker
+- `kpackagetool6` and `plasma-apply-lookandfeel`
+- Qt 6 Multimedia (`qt6-multimedia` on Arch/CachyOS)
+- An H.264/MP4 background video
 
-Install and select the SDDM `winter` theme before using this build. Qt 6
-Multimedia is also required for video playback.
+The original SDDM Winter `bg.mp4` is **not included**. Its license cannot be
+verified from the installed theme, so it is not redistributed here.
 
-## Verification
+Supply your own video explicitly:
 
-Run the lock-screen greeter against the local shell override:
+```bash
+./install.sh --video /path/to/winter-background.mp4
+```
+
+Alternatively, the installer will use either of these files when present:
+
+- `~/.local/share/winterlock/background.mp4`
+- `/usr/share/sddm/themes/winter/bg.mp4`
+
+The selected video is copied into the local shell override. Installation never
+modifies `/usr/share`.
+
+## Uninstallation
+
+```bash
+./uninstall.sh
+```
+
+The installer backs up an existing local `org.kde.plasma.desktop` override
+before replacing it. The uninstaller removes only a WinterLock-managed
+override and restores the newest backup when one is available.
+
+## Testing
 
 ```bash
 /usr/lib/kscreenlocker_greet --testing --shell org.kde.plasma.desktop
-```
-
-Then lock the real session:
-
-```bash
 loginctl lock-session
 ```
 
-## Updating Plasma
+## Repository layout
 
-Because the shell package is a local fork, update it from the corresponding
-system package after a major Plasma upgrade, then reapply the WinterLock
-changes in `contents/lockscreen`.
+- `look-and-feel/io.github.fizzy444.winterlock` — Global Theme package.
+- `shells/org.kde.plasma.desktop` — local fork containing the active
+  WinterLock lock-screen implementation.
+
+## Releases
+
+Once you have tested installation and uninstallation on a clean Plasma 6
+session, create a GitHub release (recommended first tag: `v1.0.0`).

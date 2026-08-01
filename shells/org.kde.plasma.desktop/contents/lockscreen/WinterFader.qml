@@ -42,7 +42,7 @@ Item {
     // duplicate video asset is required in this Look-and-Feel package.
     MediaPlayer {
         id: winterScenePlayer
-        source: "file:///usr/share/sddm/themes/winter/bg.mp4"
+        source: "assets/background.mp4"
         loops: MediaPlayer.Infinite
         videoOutput: winterScene
         Component.onCompleted: play()

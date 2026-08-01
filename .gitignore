@@ -1,9 +1,12 @@
 /*
 !/.gitignore
 !/README.md
+!/install.sh
+!/uninstall.sh
 !/look-and-feel/
 !/look-and-feel/org.mithun.winterlock/
 !/look-and-feel/org.mithun.winterlock/**
 !/shells/
 !/shells/org.kde.plasma.desktop/
 !/shells/org.kde.plasma.desktop/**
+**/assets/background.mp4
