@@ -1,4 +1,5 @@
 import QtQuick
+import QtCore
 
 Item {
     id: root
@@ -8,7 +9,10 @@ Item {
 
     FontLoader {
         id: winterFont
-        source: "file:///usr/share/sddm/themes/winter/font/Orbitron-VariableFont_wght.ttf"
+        source: StandardPaths.locate(
+            StandardPaths.GenericDataLocation,
+            "plasma/look-and-feel/io.github.fizzy444.winterlock/contents/lockscreen/assets/fonts/Orbitron-VariableFont_wght.ttf"
+        )
     }
 
     function updateDateTime() {

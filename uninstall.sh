@@ -17,6 +17,8 @@ else
     echo "No WinterLock-managed shell override found; leaving $target_shell unchanged."
 fi
 
+# This removes only WinterLock's installed package copy of the bundled or
+# overridden video; it never removes the user's original --video source.
 rm -rf "$target_lnf"
 
 if [[ -d "$backup_root" ]]; then

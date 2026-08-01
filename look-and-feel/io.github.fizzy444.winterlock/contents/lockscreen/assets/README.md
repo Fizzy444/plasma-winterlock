@@ -1,7 +1,5 @@
 # Background video
 
-Place `background.mp4` in this directory only for local development.
-
-It is intentionally ignored by Git because WinterLock does not redistribute
-the original SDDM Winter video without a verified license. `install.sh` copies
-a user-supplied video into this location in the installed package.
+`background.mp4` is WinterLock's bundled live background and is tracked in Git
+with redistribution permission. `install.sh --video /path/to/video.mp4` may
+replace it in a local installation without changing the repository copy.

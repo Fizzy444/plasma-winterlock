@@ -5,6 +5,7 @@
 */
 
 import QtQuick
+import QtCore
 import Qt5Compat.GraphicalEffects
 import QtMultimedia
 
@@ -20,6 +21,10 @@ Item {
     readonly property bool lightColorScheme: Math.max(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b) > 0.5
 
     property bool alwaysShowClock: false
+    readonly property string backgroundPath: StandardPaths.locate(
+        StandardPaths.GenericDataLocation,
+        "plasma/look-and-feel/io.github.fizzy444.winterlock/contents/lockscreen/assets/background.mp4"
+    )
 
     state: "on"
 
@@ -37,12 +42,10 @@ Item {
         radius: 50 * winterFader.factor
     }
 
-    // Use the same looping Winter scene as the active SDDM greeter.  It is
-    // installed system-wide with the selected `winter` SDDM theme, so no
-    // duplicate video asset is required in this Look-and-Feel package.
+    // WinterLock ships this scene inside its Global Theme package.
     MediaPlayer {
         id: winterScenePlayer
-        source: "assets/background.mp4"
+        source: winterFader.backgroundPath
         loops: MediaPlayer.Infinite
         videoOutput: winterScene
         Component.onCompleted: play()

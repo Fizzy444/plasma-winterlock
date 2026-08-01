@@ -13,9 +13,8 @@ video_path=""
 usage() {
     echo "Usage: $0 [--video /path/to/background.mp4]"
     echo ""
-    echo "Provide a video explicitly, or place one at"
-    echo "~/.local/share/winterlock/background.mp4. The installer can also use"
-    echo "/usr/share/sddm/themes/winter/bg.mp4 when it already exists locally."
+    echo "By default, install the background.mp4 bundled with WinterLock."
+    echo "Use --video to replace that bundled background for this installation."
 }
 
 while (($#)); do
@@ -50,16 +49,11 @@ done
 }
 
 if [[ -z "$video_path" ]]; then
-    for candidate in \
-        "$source_shell/contents/lockscreen/assets/background.mp4" \
-        "$data_dir/winterlock/background.mp4" \
-        /usr/share/sddm/themes/winter/bg.mp4; do
-        [[ -f "$candidate" ]] && { video_path=$candidate; break; }
-    done
+    video_path="$source_lnf/contents/lockscreen/assets/background.mp4"
 fi
 
 [[ -n "$video_path" && -f "$video_path" ]] || {
-    echo "No background video found. Re-run with --video /path/to/background.mp4." >&2
+    echo "Bundled background video is missing: $video_path" >&2
     exit 1
 }
 
@@ -85,7 +79,9 @@ trap 'rm -rf "$stage_dir"' EXIT
 mkdir -p "$stage_dir/look-and-feel" "$stage_dir/shells"
 cp -a "$source_lnf" "$stage_dir/look-and-feel/$package_id"
 cp -a "$source_shell" "$stage_dir/shells/org.kde.plasma.desktop"
-install -Dm644 "$video_path" "$stage_dir/shells/org.kde.plasma.desktop/contents/lockscreen/assets/background.mp4"
+# A custom --video is copied into the package; the original user file is never
+# removed by uninstall.
+install -Dm644 "$video_path" "$stage_dir/look-and-feel/$package_id/contents/lockscreen/assets/background.mp4"
 
 previous_lnf=""
 if command -v kreadconfig6 >/dev/null; then
