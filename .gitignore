@@ -1,5 +1,6 @@
 /*
 !/.gitignore
+!/README.md
 !/look-and-feel/
 !/look-and-feel/org.mithun.winterlock/
 !/look-and-feel/org.mithun.winterlock/**
