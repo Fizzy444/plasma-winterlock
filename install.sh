@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Mithun A
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Install WinterLock without modifying /usr/share.
 set -euo pipefail
 

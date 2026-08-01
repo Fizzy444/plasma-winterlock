@@ -1,6 +1,10 @@
 /*
 !/.gitignore
 !/README.md
+!/LICENSE
+!/ASSETS.md
+!/LICENSES/
+!/LICENSES/**
 !/install.sh
 !/uninstall.sh
 !/look-and-feel/

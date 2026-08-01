@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Mithun A
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Remove WinterLock and restore a pre-existing local shell override when safe.
 set -euo pipefail
 

@@ -81,6 +81,23 @@ loginctl lock-session
 - `shells/org.kde.plasma.desktop` — local fork containing the active
   WinterLock lock-screen implementation.
 
+## Credits and licensing
+
+WinterLock contains code derived from KDE Plasma and Breeze. KDE-derived files
+retain their original copyright holders and SPDX license identifiers, including
+both `GPL-2.0-or-later` and `LGPL-2.0-or-later` files. Their notices have not
+been replaced.
+
+WinterLock modifications are maintained by Mithun A / Fizzy444 and are marked
+with `SPDX-FileCopyrightText: 2026 Mithun A` where applicable. The overall KDE
+Store project is listed as `GPL-2.0-or-later` because it contains GPL-derived
+components; consult each source file's SPDX header for its exact license.
+
+The live `background.mp4` is redistributed with permission under terms
+separate from the software license. Orbitron is licensed under the SIL Open
+Font License 1.1. See [LICENSE](LICENSE), [ASSETS.md](ASSETS.md), and
+[`LICENSES/`](LICENSES/) for the complete notices and license texts.
+
 ## Releases
 
 Once you have tested installation and uninstallation on a clean Plasma 6

@@ -1,0 +1,9 @@
+WinterLock's overall project license is GPL-2.0-or-later.
+
+Individual source files are licensed under the SPDX-License-Identifier in
+their file headers. In particular, the project contains KDE Plasma/Breeze
+derived files under both GPL-2.0-or-later and LGPL-2.0-or-later; those files
+retain their existing SPDX copyright and license notices.
+
+The complete GPL-2.0-or-later and LGPL-2.0-or-later license texts are in
+LICENSES/. Third-party asset terms are documented in ASSETS.md.
