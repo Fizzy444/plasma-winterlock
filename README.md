@@ -16,6 +16,19 @@ Winter video background.
 - Stock Plasma 6 Breeze password authentication, session controls, and unlock
   behavior.
 
+## Optional Desktop Layout
+
+Applying WinterLock as a Global Theme will now also apply an optional desktop layout matching the author's setup:
+- A floating, auto-hiding top panel with the system tray and clock.
+- A floating bottom panel (dodging windows) with an application launcher and icons-only task manager.
+
+### Third-Party Widgets
+
+The provided desktop layout optionally references two third-party widgets. They are not bundled with this theme due to licensing constraints, but the layout will attempt to load them if they are installed on your system. If they are not installed, the layout will degrade gracefully and simply skip those widgets.
+
+- **[Modern Clock](https://github.com/prayag2/modernclock)** (`com.github.prayag2.modernclock`): Used as the primary desktop clock widget.
+- **[Spatium](https://store.kde.org/p/2130761)** (`org.kde.plasma.spatium`): A GNOME-like virtual desktops switcher used on the bottom panel.
+
 ## Compatibility warning
 
 WinterLock installs a complete local override of

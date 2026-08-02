@@ -108,6 +108,10 @@ rm -rf "$target_lnf"
 cp -a "$stage_dir/look-and-feel/$package_id" "$target_lnf"
 cp -a "$stage_dir/shells/org.kde.plasma.desktop" "$target_shell"
 
+# Update the layout file with the absolute path to the bundled wallpaper
+if [[ -f "$target_lnf/contents/layouts/org.kde.plasma.desktop-layout.js" ]]; then
+    sed -i "s|@WALLPAPER_PATH@|$target_lnf/contents/images/wallhaven-7jeozo.jpg|g" "$target_lnf/contents/layouts/org.kde.plasma.desktop-layout.js"
+fi
 printf '%s\n' "$previous_lnf" > "$state_file"
 plasma-apply-lookandfeel --apply "$package_id"
 

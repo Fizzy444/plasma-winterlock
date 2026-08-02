@@ -18,3 +18,8 @@ contains the following embedded license and copyright metadata:
 - Reserved Font Name: `Orbitron`
 
 The complete OFL-1.1 text is in `LICENSES/OFL-1.1.txt`.
+
+## Desktop Wallpaper
+
+`look-and-feel/io.github.fizzy444.winterlock/contents/images/wallhaven-7jeozo.jpg`
+The WinterLock global theme extension now bundles this wallpaper as explicitly requested. The installation script (`install.sh`) dynamically updates the layout script to point to its final installed location, ensuring it is cleanly applied by Plasma.
