@@ -3,7 +3,7 @@ for (var j = 0; j < desktopsArray.length; j++) {
     // Set bundled wallpaper
     desktopsArray[j].wallpaperPlugin = "org.kde.image";
     desktopsArray[j].currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
-    desktopsArray[j].writeConfig("Image", "file:///home/mithun/.local/share/plasma/look-and-feel/io.github.fizzy444.winterlock/contents/images/wallhaven-7jeozo.jpg");
+    desktopsArray[j].writeConfig("Image", "file://@WALLPAPER_PATH@");
 
     // Add Desktop Widgets
     var clock = desktopsArray[j].addWidget("com.github.prayag2.modernclock");
@@ -21,9 +21,11 @@ for (var j = 0; j < desktopsArray.length; j++) {
 // ----------------------------------------------------------------------------
 var bottomPanel = new Panel("org.kde.panel");
 bottomPanel.location = "bottom";
+bottomPanel.alignment = "center";
+bottomPanel.lengthMode = "fit";
 bottomPanel.height = 46;
 bottomPanel.floating = true;
-bottomPanel.hiding = "windowsgobelow"; // Panel visibility mode (Dodge Windows)
+bottomPanel.hiding = "dodgewindows"; // Panel visibility mode (Dodge Windows)
 
 // Widgets for bottom panel
 bottomPanel.addWidget("org.kde.plasma.spatium");
@@ -43,12 +45,11 @@ bottomPanel.addWidget("org.kde.plasma.marginsseparator");
 // ----------------------------------------------------------------------------
 var topPanel = new Panel("org.kde.panel");
 topPanel.location = "top";
-topPanel.height = 32;
 topPanel.alignment = "right";
+topPanel.lengthMode = "fit";
+topPanel.height = 32;
 topPanel.floating = true;
 topPanel.hiding = "autohide"; // Panel visibility mode
-topPanel.minimumLength = 1508;
-topPanel.maximumLength = 1508;
 
 // Widgets for top panel
 var systray = topPanel.addWidget("org.kde.plasma.systemtray");
