@@ -3,10 +3,17 @@ for (var j = 0; j < desktopsArray.length; j++) {
     // Set bundled wallpaper
     desktopsArray[j].wallpaperPlugin = "org.kde.image";
     desktopsArray[j].currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
-    desktopsArray[j].writeConfig("Image", "file://@WALLPAPER_PATH@");
+    desktopsArray[j].writeConfig("Image", "file:///home/mithun/.local/share/plasma/look-and-feel/io.github.fizzy444.winterlock/contents/images/wallhaven-7jeozo.jpg");
 
     // Add Desktop Widgets
-    desktopsArray[j].addWidget("com.github.prayag2.modernclock");
+    var clock = desktopsArray[j].addWidget("com.github.prayag2.modernclock");
+    
+    // Position clock at the bottom right
+    desktopsArray[j].currentConfigGroup = ["General"];
+    var geom = "Applet-" + clock.id + ":976,560,528,160,0;";
+    desktopsArray[j].writeConfig("ItemGeometriesHorizontal", geom);
+    desktopsArray[j].writeConfig("ItemGeometries-1536x864", geom);
+    desktopsArray[j].writeConfig("ItemGeometries-1920x1080", geom);
 }
 
 // ----------------------------------------------------------------------------
